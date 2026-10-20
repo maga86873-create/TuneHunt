@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tunehunt-bot
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt && apt-get update && apt-get install -y ffmpeg"
+    startCommand: "python main.py"
+    healthCheckPath: /health
+    envVars:
+      - key: TELEGRAM_TOKEN
+        sync: false
+      - key: AUDD_TOKEN
+        sync: false
